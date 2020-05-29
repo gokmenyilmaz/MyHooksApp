@@ -4,35 +4,36 @@ import { fetchRepos } from "./api.js";
 import Loading from "./Loading";
 
 const ReposGridHook = (id) => {
-  const [ repos, setRepos ] = React.useState([])
-  const [ loading, setLoading ] = React.useState(true)
-
+  const [repos, setRepos] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
 
-    fetchRepos(id)
-      .then((repos) => {
-        setRepos(repos)
-        setLoading(false)
-      })
-  }, [id])
+    fetchRepos(id).then((repos) => {
+      setRepos(repos);
+      setLoading(false);
+
+      console.log("effect");
+    });
+  }, [id]);
 
   if (loading === true) {
-    return <Loading />
+    return <Loading />;
   }
 
+  const kaydet = () => {
+    fetchRepos(id).then((repos) => {
+      setRepos(repos);
+      setLoading(false);
 
-  const kaydet=()=>
-  {
-    alert("denemem");
-  }
-
+      console.log("effect");
+    });
+  };
 
   return (
     <ul>
-   
-    <button onClick={()=>kaydet()}>Kaydet</button>
+      <button onClick={() => kaydet()}>Kaydet</button>
       {repos.map(({ name, handle, stars, url }) => (
         <li key={name}>
           <ul>
