@@ -22,9 +22,17 @@ const ReposGridHook = (id) => {
     return <Loading />
   }
 
+
+  const kaydet=()=>
+  {
+    alert("denemem");
+  }
+
+
   return (
     <ul>
    
+    <button onClick={()=>kaydet()}>Kaydet</button>
       {repos.map(({ name, handle, stars, url }) => (
         <li key={name}>
           <ul>
