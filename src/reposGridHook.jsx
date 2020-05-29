@@ -22,12 +22,6 @@ const ReposGridHook = (id) => {
     return <Loading />
   }
 
-  if (loading === true) {
-    return <Loading />;
-  }
-
-
-
   return (
     <ul>
    
